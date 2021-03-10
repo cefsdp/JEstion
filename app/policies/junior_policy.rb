@@ -1,7 +1,7 @@
 class JuniorPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      user.admin? ? scope.all : scope.joins(:users).where(users: user.id)
     end
   end
 

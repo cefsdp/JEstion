@@ -1,4 +1,26 @@
-nom : <%= @junior.name %>
-alpha : <%= @junior.alpha %>
-beta : <%= @junior.beta %>
-utilisateurs : <%= @junior.users %>
+<br><br>
+Informations
+<ul>
+    <li>nom : <%= @junior.name %></li>
+    <li>alpha : <%= @junior.alpha %></li>
+    <li>beta : <%= @junior.beta %></li>
+</ul>
+
+<br><br>
+
+utilisateurs
+<ul>
+    <li>Total : <% @junior.users.each do |user| %> <%= user.first_name %>, <% end %></li>
+    <li>Admin : </li>
+    <li>Membre :</li>
+    <li>Adhérents :</li>
+    <li>Clients : </li>
+</ul>
+
+<br><br>
+liens d'invitation
+<ul>
+    <li>Client : </li>
+    <li>Adhérent : </li>
+    <li>Membre : </li>
+</ul>

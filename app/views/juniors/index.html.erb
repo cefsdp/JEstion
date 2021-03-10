@@ -1,9 +1,19 @@
 <ul>
     <% @juniors.each do |junior| %>
         <li>
-            <% link_to junior_path(junior.name) do %>
-                nom : <%= junior.name %>
+            <%= link_to junior_path(junior.name) do %>
+                name : <%= junior.name %>
             <% end %>
         </li>
     <% end %>
 </ul>
+
+<% if user_signed_in? %>
+    <% if current_user.admin? %>
+
+        <%= link_to new_junior_path do %>
+            créer une junior
+        <% end %>
+
+    <% end %>
+<% end %>

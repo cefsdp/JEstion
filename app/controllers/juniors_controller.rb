@@ -6,7 +6,7 @@ class JuniorsController < ApplicationController
   end
 
   def show
-    @junior = Junior.find(nom: params[:nom])
+    @junior = Junior.find_by(name: params[:name])
     authorize @junior
   end
 
@@ -47,6 +47,5 @@ class JuniorsController < ApplicationController
     @user.save!
     @junior_acces = AccesJunior.new(user_id: @user.id, junior_id: @junior.id)
     @junior_acces.save
-    raise
   end
 end
