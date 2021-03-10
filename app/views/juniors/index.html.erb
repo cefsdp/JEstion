@@ -1,0 +1,9 @@
+<ul>
+    <% @juniors.each do |junior| %>
+        <li>
+            <% link_to junior_path(junior.name) do %>
+                nom : <%= junior.name %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
