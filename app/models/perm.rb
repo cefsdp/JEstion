@@ -1,0 +1,2 @@
+class Perm < ApplicationRecord
+end

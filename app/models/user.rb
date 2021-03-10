@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :acces_juniors, dependent: :destroy
   has_many :juniors, through: :acces_juniors
+  has_one :membre, through: :acces_juniors
 end

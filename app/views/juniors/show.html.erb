@@ -18,9 +18,9 @@ utilisateurs
 </ul>
 
 <br><br>
-liens d'invitation
+liens d'invitation à la structure
 <ul>
-    <li>Client : </li>
-    <li>Adhérent : </li>
-    <li>Membre : </li>
+    <li>Client : <%= link_to 'inviter un membre', new_user_registration_path(registration_data: {type: 'client', junior_id: @junior.id} ) %> </li>
+    <li>Adhérent : <%= link_to 'inviter un membre', new_user_registration_path(registration_data: {type: 'adherent', junior_id: @junior.id} ) %> </li>
+    <li>Membre : <%= link_to 'inviter un membre', new_user_registration_path(registration_data: {type: 'membre', junior_id: @junior.id} ) %> </li>
 </ul>

@@ -45,7 +45,7 @@ class JuniorsController < ApplicationController
 
   def new_acces_junior
     @user.save!
-    @junior_acces = AccesJunior.new(user_id: @user.id, junior_id: @junior.id)
+    @junior_acces = AccesJunior.new(user_id: @user.id, junior_id: @junior.id, perm_id: Perm.create)
     @junior_acces.save
   end
 end

@@ -12,6 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    raise
+    getting_registration_data if params[:registration_data]
   end
 
   # GET /resource/edit
@@ -38,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +61,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def getting_registration_data
+    req = JSON.parse params.require(:registration_data).gsub('=>', ':')
+    @junior = Junior.find(req["junior_id"])
+    @type = req["type"]
+    req["etude_id"] ? @etude = Etude.find(req["etude_id"]) : nil
+    @type == 'membre' ? creating_membre : nil
+    @type == 'adherent' ? creating_adherent : nil
+    @type == 'client' ? creating_client : nil
+  end
+
+  def creating_acces_junior
+    @acces_junior = AccesJunior.create(junior_id: @junior.id, user_id: @user.id)
+  end
+
+  def creating_membre
+    creating_acces_junior
+    @membre = Membre.create(acces_junior_id: @acces_junior.id, alumni: false)
+  end
 end
